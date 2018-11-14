@@ -10,9 +10,9 @@ class App extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state={
-      gender: 'male',
-      name: 'jonny',
-      story: 1,
+      gender: 'female',
+      name: '',
+      story: 2,
       ready: false,
     }
     this.updateField = this.updateField.bind(this);
@@ -34,7 +34,7 @@ class App extends React.Component<any, any> {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">I Story</h1>
         </header>
         <DetailsForm gender={gender} name={name} story={story} updateField={this.updateField} onConfirm={this.onConfirm}/>
         {ready && <Player gender={gender} name={name} story={story}/>}

@@ -9,7 +9,6 @@ class Player extends React.Component<MainProps, MainState>{
   constructor(props: any) {
     super(props);
     const { story, name, gender } = this.props;
-    console.log(this.props)
     const url = `http://localhost:9000/?storyId=${story}&name=${name}&gender=${gender}`;
 
     this.state = {
@@ -17,7 +16,6 @@ class Player extends React.Component<MainProps, MainState>{
       play: false,
       audio: new Audio(url)
     }
-    console.log(url)
   }
 
   public componentWillUnmount() {
@@ -33,6 +31,14 @@ class Player extends React.Component<MainProps, MainState>{
   this.setState({ play: false, pause: true })
     this.state.audio.pause();
   }
+
+  public stop = () => {
+    this.setState({ play: false, pause: true })
+      this.state.audio.currentTime = 0
+      this.state.audio.pause();
+    }
+
+  
   
   public render() {
     
@@ -40,6 +46,7 @@ class Player extends React.Component<MainProps, MainState>{
     <div>
       <button onClick={this.play}>Play</button>
       <button onClick={this.pause}>Pause</button>
+      <button onClick={this.stop}>Stop</button>
     </div>
     );
   }
